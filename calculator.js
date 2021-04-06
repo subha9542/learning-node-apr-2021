@@ -29,3 +29,6 @@ switch (operator) {
 // node calculator.js 11454 - 2454
 // node calculator.js 11454 * 2454
 // node calculator.js 11454 / 2454
+
+// node login.js admin praveen 123456 
+// node login.js normal praveen 123456
