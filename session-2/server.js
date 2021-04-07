@@ -10,6 +10,8 @@ app.use(express.urlencoded({
 app.get("/employees", (req, res) => {
     fs.readFile("./session-2/employee.json", (error, response) => {
         if (error) {
+            res.sendStatus(503);
+            res.json({ status : "error" })
             return false;
         }
         const contentString = response.toString();
@@ -23,6 +25,8 @@ app.get("/employees", (req, res) => {
 app.post("/employees", (req, res) => {
     fs.readFile("./session-2/employee.json", (error, response) => {
         if (error) {
+            res.sendStatus(503);
+            res.json({ status : "error" })
             return false;
         }
         const contentString = response.toString();
