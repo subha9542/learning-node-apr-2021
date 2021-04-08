@@ -1,0 +1,15 @@
+<html>
+    <head></head>
+    <body>
+        <h1>People</h1>
+        <hr/>
+        <ul>
+            <% for(let i = 0; i < people.length; i++) { 
+                let person = people[i]; %>
+                <li>
+                    Name: <%= person.name %>
+                </li>
+            <% } %>
+        </ul>
+    </body>
+</html>
