@@ -1,11 +1,19 @@
+// Step 1
+// Install -> express, ejs, and axios
+// npm install express ejs axios
+
 const express = require("express");
 const app = express();
+
+
 const axios = require("axios").default;
 const url = "https://jsonplaceholder.typicode.com/users";
 const posts = "https://jsonplaceholder.typicode.com/posts";
 
+// Step 2
 app.set("view engine" , "ejs")
 
+// Step 3
 app.get("/people", async (req, res)=>{
     const peopleResponse = await axios.get(url);
     const peopleData = peopleResponse.data;
@@ -29,10 +37,11 @@ app.get("/api/posts", async (req, res)=>{
     postData = postData.map((item, index)=>{
         return {...item, comments : commentsResponses[index].status === "fulfilled" ? commentsResponses[index].value : [] }
     })
-    
+
     res.json({ posts : postData })
 })
 
+// Step 4
 app.listen(3000, ()=>{
     console.log("Server started successfully.")
 })
