@@ -56,3 +56,10 @@ mongoimport.exe --db tacoshop --collection people --drop --file data.json --json
 
 MAC > ./mongoimport -d tacoshop -c people -f data.json
 
+
+### Setting New Project 
+- Create new folder.
+- Run `npm init`
+- Run `npm install express ejs mongoose`
+- Create application.js to setup Express Application.
+
