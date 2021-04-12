@@ -28,9 +28,20 @@ app.get("/people", (req, res) => {
     })
 });
 
+
+app.get("/people/super", (req, res) => {
+    const { id } = req.params;
+    const body = req.body;
+    database.collection("people").find({ "address.city": { $in: ["Wisokyburgh", "Aliyaview"] } }, (error, docs) => {
+        docs.toArray((error, array) => {
+            console.log(array)
+            res.json(array)
+        })
+    })
+})
+
 app.get("/people/:id", (req, res) => {
     const { id } = req.params;
-
     database.collection("people").findOne({ id: parseInt(id, 10) }, (error, doc) => {
         console.log(doc);
         res.json(doc)
@@ -57,11 +68,11 @@ app.patch("/people/:id", (req, res) => {
     //     res.json({ status : "Updated" })
     // })
 
-    database.collection("people").findOne({ id: parseInt(id, 10) }, (error, doc)=>{
+    database.collection("people").findOne({ id: parseInt(id, 10) }, (error, doc) => {
         const currentDocument = doc;
         currentDocument.name = body.name;
-        database.collection("people").save(currentDocument, (err, doc)=>{
-            res.json({ status : "Updated" })
+        database.collection("people").save(currentDocument, (err, doc) => {
+            res.json({ status: "Updated" })
         });
     })
 
@@ -75,10 +86,29 @@ app.delete("/people/:id", (req, res) => {
     // })
 
     database.collection("people").remove({ id: parseInt(id, 10) }, (error, response) => {
-        if(error) throw error;
-        res.json({ status : "Deleted" })
+        if (error) throw error;
+        res.json({ status: "Deleted" })
     })
 })
+
+app.post("/people/:id", (req, res) => {
+    const { id } = req.params;
+    const body = req.body;
+    database.collection("people").save(body, (err, doc) => {
+        res.json({ status: "Updated" })
+    });
+})
+
+app.get("/isadmin", (req, res) => {
+    const { id } = req.params;
+    const body = req.body;
+    database.collection("people").find({ isAdmin : { $exists : true } }).toArray((err, docs)=>{
+        res.json(docs);
+    })
+})
+
+
+
 
 
 
