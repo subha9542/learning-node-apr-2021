@@ -6,8 +6,8 @@ const { Schema } = mongoose
 const PeopleSchema = new Schema({
     "id": Number,
     "name": String,
-    "username": String,
-    "email": String,
+    "username": { type : String, require : true },
+    "email": { type : String, required : false },
     "address": {
         "street": String,
         "suite": String,
@@ -24,7 +24,8 @@ const PeopleSchema = new Schema({
         "name": String,
         "catchPhrase": String,
         "bs": String
-    }
+    },
+    "createdOn" : { default : new Date(), type : Date }
 })
 
 const Model = mongoose.model("people", PeopleSchema, "people")
