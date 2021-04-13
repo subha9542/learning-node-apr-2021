@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev-session-2": "nodemon session-2/server.js",
     "start-dev-session-3": "nodemon session-3/application.js",
-    "start": "pm2 start ./session-2/pm2-config.js"
+    "start": "pm2 start ./session-2/pm2-config.js",
+    "es6-demo": "nodemon --exec babel-node ./session-6/es6-demo/index.js",
+    "dashboard-demo": "nodemon --exec babel-node ./session-6/dashboard/index.js"
   },
   "keywords": [
     "api",
@@ -29,5 +31,10 @@
     "mongoose": "^5.12.3",
     "nodemon": "^2.0.7",
     "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15"
   }
 }

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <link type="text/css" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <table id="a">
+
+        <thead>
+            <tr>
+                <td>Hello</td>
+                <td>Hello</td>
+                <td>Hello</td>
+                <td>Hello</td>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <%for(let i = 0; i < people.length; i++) { 
+                const person = people[i];
+            %>
+            <tr>
+                <td><%= person.name %></td>
+                <td><%= person.username %></td>
+                <td><%= person.email %></td>
+                <td><%= person.id %></td>
+            </tr>
+            <% } %>
+        </tbody>
+        
+    </table>
+    <script>
+        $(document).ready(function () {
+            $('#a').DataTable();
+        });
+    </script>
+</body>
+
+</html>
