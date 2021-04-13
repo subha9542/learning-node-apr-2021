@@ -5,7 +5,11 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <link type="text/css" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
-
+    <style>
+        .highlight {
+            background-color: aqua !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,6 +21,7 @@
                 <td>Hello</td>
                 <td>Hello</td>
                 <td>Hello</td>
+                <td>Days Passed</td>
             </tr>
         </thead>
         <tbody>
@@ -24,11 +29,12 @@
             <%for(let i = 0; i < people.length; i++) { 
                 const person = people[i];
             %>
-            <tr>
+            <tr class="<%= person.highlight ? 'highlight' : '' %>">
                 <td><%= person.name %></td>
                 <td><%= person.username %></td>
                 <td><%= person.email %></td>
                 <td><%= person.id %></td>
+                <td><%= person.daysPassed %></td>
             </tr>
             <% } %>
         </tbody>

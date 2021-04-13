@@ -17,7 +17,24 @@ app.get("/", async (req, res)=>{
 
     try {
         const people = await PeopleModel.find();
-        res.render("dashboard", { people });
+
+        const peopleWithHigh = people.map((person)=>{
+            const newPerson = person.toObject();
+            const createdOn = new Date(newPerson.createdOn);
+            const current = new Date()
+            const diff = current - createdOn;
+            const millInDay = 86400000
+            if(diff > 86400000 * 3 )
+                {
+                    newPerson.highlight = true;
+                }
+                newPerson.daysPassed = Math.floor(diff / 86400000);
+            return newPerson;
+        })
+
+        console.log(peopleWithHigh)
+
+        res.render("dashboard", { people : peopleWithHigh });
     } catch (error) {
         console.log(error)
         res.status(500);
