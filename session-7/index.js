@@ -21,7 +21,7 @@ app.get("/login", (req, res) => {
 app.post("/login", async (req, res) => {
     const { body } = req;
     console.log(body);
-    if (body.email && body.email !== "" && body.email && body.email !== "") {
+    if (body.email && body.email !== "" && body.password && body.password !== "") {
         try {
             const user = await PeopleModel.findOne({ email: body.email, password: body.password }, "-password")
             const token = jwt.sign({ name: user.name, id: user.id }, process.env.APPLICATION_SECRET_KEY)
