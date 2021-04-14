@@ -1,5 +1,6 @@
 require("./schema/db")
-const config = require("dotenv").config({ path: ".env" })
+require("dotenv").config({ path: ".env" })
+
 const express = require("express");
 const app = express();
 const jwt = require("jsonwebtoken")
